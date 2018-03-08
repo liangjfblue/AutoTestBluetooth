@@ -1,0 +1,62 @@
+<resources>
+    <string name="app_name">rtk_linux_1</string>
+    <string name="latitude">经度： </string>
+    <string name="longtitude">纬度：  </string>
+    <string name="time">时间： </string>
+    <string name="status">解状态：   </string>
+    <string name="workway">工作方式：   </string>
+    <string name="sky">卫星星空图</string>
+    <string name="movetext">移动站</string>
+    <string name="basetext">基准站</string>
+    <string name="mstatic">静态采集</string>
+    <string name="staticdata">原始数据</string>
+
+    <string name="radio">电台</string>
+    <string name="channel">频道</string>
+    <string name="protocol">协议</string>
+    <string name="power">功率 </string>
+
+    <string name="net">网络</string>
+    <string name="username">用户名</string>
+    <string name="password">密码 </string>
+    <string name="port">端口 </string>
+    <string name="ip">IP地址</string>
+    <string name="id">ID组号</string>
+    <string name="statictime">静态时间间隔</string>
+
+
+    <string-array name="spinner_pro">
+        <item>HITARGET_PROTOCOL</item>
+        <item>HITARGET_9600</item>
+        <item>HITARGET_19200</item>
+        <item>TRANSEOT_19200</item>
+    </string-array>
+
+    <string-array name="spinner_power">
+        <item>low</item>
+        <item>mid</item>
+        <item>high</item>
+    </string-array>
+
+    <string-array name="spinner_staticTime">
+        <item>0.2</item>
+        <item>0.5</item>
+        <item>1</item>
+        <item>5</item>
+        <item>10</item>
+        <item>15</item>
+        <item>30</item>
+        <item>60</item>
+    </string-array>
+
+    <string-array name="more_array">
+        <item>更多</item>
+        <item>查看原始数据</item>
+        <item>TCP下载数据</item>
+    </string-array>
+    <string name="title_activity_move">移动站</string>
+    <string name="title_activity_base">基准站</string>
+    <string name="title_activity_static">静态</string>
+    <string name="title_activity_channel">通信协议</string>
+
+</resources>

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.rtk_linux_1.rtk_linux_1.MainActivity">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="587dp"
+        tools:layout_editor_absoluteX="40dp"
+        tools:layout_editor_absoluteY="8dp">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <ImageButton
+                android:id="@+id/setble_new"
+                android:layout_width="313dp"
+                android:layout_height="90dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="10dp"
+                android:background="@android:drawable/dialog_holo_light_frame" />
+
+            <TextView
+                android:id="@+id/textView_new"
+                android:layout_width="120dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="130dp"
+                android:layout_marginTop="40dp"
+                android:text="蓝牙连接"
+                android:textSize="25dp" />
+
+            <Button
+                android:id="@+id/close_ble"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="500dp"
+                android:text="关闭" />
+
+            <Button
+                android:id="@+id/exit_new"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="130dp"
+                android:layout_marginTop="500dp"
+                android:text="退出" />
+
+            <Button
+                android:id="@+id/bluetoothsend_new"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="250dp"
+                android:layout_marginTop="500dp"
+                android:text="发送" />
+
+            <EditText
+                android:id="@+id/cmd_input"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="80dp"
+                android:layout_marginTop="150dp"
+                android:autoText="false"
+                android:ems="7"
+                android:inputType="text"
+                android:textColor="@color/colorPrimary"
+                android:textColorLink="@color/solorfoused"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="155dp"
+                android:text="命令"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/connect_error"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="240dp"
+                android:text="连接失败次数: "
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/connect_error_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="190dp"
+                android:layout_marginTop="240dp"
+                android:text="0"
+                android:textColor="@color/colorPrimary"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/clean_num"
+                android:layout_width="66dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="220dp"
+                android:layout_marginTop="238dp"
+                android:text="清零"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/connect_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="200dp"
+                android:text="连接状态: "
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/connect_flag"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="140dp"
+                android:layout_marginTop="200dp"
+                android:text="未连接"
+                android:textColor="@color/colorPrimary"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
