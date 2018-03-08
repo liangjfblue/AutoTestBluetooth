@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "/home/liangjf/zhd_work/android/ble/rtk_linux_1/app/build/intermediates/res/merged/debug/mipmap-xhdpi-v4/bg2.jpeg",
+        "source": "/home/liangjf/zhd_work/android/ble/rtk_linux_1/app/src/main/res/mipmap-xhdpi/bg2.jpeg"
+    },
+    {
+        "merged": "/home/liangjf/android_git/rtk_linux_1/app/build/intermediates/res/merged/debug/mipmap-xhdpi-v4/bg.jpg",
+        "source": "/home/liangjf/android_git/rtk_linux_1/app/src/main/res/mipmap-xhdpi/bg.jpg"
+    },
+    {
+        "merged": "/home/liangjf/zhd_work/android/ble/rtk_linux_1/app/build/intermediates/res/merged/debug/mipmap-xhdpi-v4/bg.jpg",
+        "source": "/home/liangjf/zhd_work/android/ble/rtk_linux_1/app/src/main/res/mipmap-xhdpi/bg.jpg"
+    },
+    {
+        "merged": "/home/liangjf/AndroidStudioProjects/rtk_linux_1/app/build/intermediates/res/merged/debug/mipmap-xhdpi-v4/bg2.jpeg",
+        "source": "/home/liangjf/AndroidStudioProjects/rtk_linux_1/app/src/main/res/mipmap-xhdpi/bg2.jpeg"
+    },
+    {
+        "merged": "/home/liangjf/AndroidStudioProjects/rtk_linux_1/app/build/intermediates/res/merged/debug/mipmap-xhdpi-v4/bg.jpg",
+        "source": "/home/liangjf/AndroidStudioProjects/rtk_linux_1/app/src/main/res/mipmap-xhdpi/bg.jpg"
+    },
+    {
+        "merged": "/home/liangjf/android_git/rtk_linux_1/app/build/intermediates/res/merged/debug/mipmap-xhdpi-v4/bg2.jpeg",
+        "source": "/home/liangjf/android_git/rtk_linux_1/app/src/main/res/mipmap-xhdpi/bg2.jpeg"
+    }
+]

@@ -1,0 +1,50 @@
+[
+    {
+        "merged": "/home/liangjf/android_git/rtk_linux_1/app/build/intermediates/res/merged/debug/layout-v21/notification_template_custom_big.xml",
+        "source": "/home/liangjf/.android/build-cache/f505c8527057fad43f17396ed55d340d144e3a5f/output/res/layout-v21/notification_template_custom_big.xml"
+    },
+    {
+        "merged": "/home/liangjf/AndroidStudioProjects/rtk_linux_1/app/build/intermediates/res/merged/debug/layout-v21/notification_template_icon_group.xml",
+        "source": "/home/liangjf/.android/build-cache/f505c8527057fad43f17396ed55d340d144e3a5f/output/res/layout-v21/notification_template_icon_group.xml"
+    },
+    {
+        "merged": "/home/liangjf/android_git/rtk_linux_1/app/build/intermediates/res/merged/debug/layout-v21/notification_template_icon_group.xml",
+        "source": "/home/liangjf/.android/build-cache/f505c8527057fad43f17396ed55d340d144e3a5f/output/res/layout-v21/notification_template_icon_group.xml"
+    },
+    {
+        "merged": "/home/liangjf/AndroidStudioProjects/rtk_linux_1/app/build/intermediates/res/merged/debug/layout-v21/notification_template_custom_big.xml",
+        "source": "/home/liangjf/.android/build-cache/f505c8527057fad43f17396ed55d340d144e3a5f/output/res/layout-v21/notification_template_custom_big.xml"
+    },
+    {
+        "merged": "/home/liangjf/android_git/rtk_linux_1/app/build/intermediates/res/merged/debug/layout-v21/notification_action.xml",
+        "source": "/home/liangjf/.android/build-cache/f505c8527057fad43f17396ed55d340d144e3a5f/output/res/layout-v21/notification_action.xml"
+    },
+    {
+        "merged": "/home/liangjf/AndroidStudioProjects/rtk_linux_1/app/build/intermediates/res/merged/debug/layout-v21/notification_action_tombstone.xml",
+        "source": "/home/liangjf/.android/build-cache/f505c8527057fad43f17396ed55d340d144e3a5f/output/res/layout-v21/notification_action_tombstone.xml"
+    },
+    {
+        "merged": "/home/liangjf/zhd_work/android/ble/rtk_linux_1/app/build/intermediates/res/merged/debug/layout-v21/notification_action.xml",
+        "source": "/home/liangjf/.android/build-cache/f505c8527057fad43f17396ed55d340d144e3a5f/output/res/layout-v21/notification_action.xml"
+    },
+    {
+        "merged": "/home/liangjf/AndroidStudioProjects/rtk_linux_1/app/build/intermediates/res/merged/debug/layout-v21/notification_action.xml",
+        "source": "/home/liangjf/.android/build-cache/f505c8527057fad43f17396ed55d340d144e3a5f/output/res/layout-v21/notification_action.xml"
+    },
+    {
+        "merged": "/home/liangjf/android_git/rtk_linux_1/app/build/intermediates/res/merged/debug/layout-v21/notification_action_tombstone.xml",
+        "source": "/home/liangjf/.android/build-cache/f505c8527057fad43f17396ed55d340d144e3a5f/output/res/layout-v21/notification_action_tombstone.xml"
+    },
+    {
+        "merged": "/home/liangjf/zhd_work/android/ble/rtk_linux_1/app/build/intermediates/res/merged/debug/layout-v21/notification_template_icon_group.xml",
+        "source": "/home/liangjf/.android/build-cache/f505c8527057fad43f17396ed55d340d144e3a5f/output/res/layout-v21/notification_template_icon_group.xml"
+    },
+    {
+        "merged": "/home/liangjf/zhd_work/android/ble/rtk_linux_1/app/build/intermediates/res/merged/debug/layout-v21/notification_template_custom_big.xml",
+        "source": "/home/liangjf/.android/build-cache/f505c8527057fad43f17396ed55d340d144e3a5f/output/res/layout-v21/notification_template_custom_big.xml"
+    },
+    {
+        "merged": "/home/liangjf/zhd_work/android/ble/rtk_linux_1/app/build/intermediates/res/merged/debug/layout-v21/notification_action_tombstone.xml",
+        "source": "/home/liangjf/.android/build-cache/f505c8527057fad43f17396ed55d340d144e3a5f/output/res/layout-v21/notification_action_tombstone.xml"
+    }
+]

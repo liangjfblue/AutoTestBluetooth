@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "/home/liangjf/android_git/rtk_linux_1/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi/ic_launcher_round.png",
+        "source": "/home/liangjf/android_git/rtk_linux_1/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/home/liangjf/zhd_work/android/ble/rtk_linux_1/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi/ic_launcher_round.png",
+        "source": "/home/liangjf/zhd_work/android/ble/rtk_linux_1/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/home/liangjf/AndroidStudioProjects/rtk_linux_1/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi/ic_launcher.png",
+        "source": "/home/liangjf/AndroidStudioProjects/rtk_linux_1/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/liangjf/AndroidStudioProjects/rtk_linux_1/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi/ic_launcher_round.png",
+        "source": "/home/liangjf/AndroidStudioProjects/rtk_linux_1/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/home/liangjf/zhd_work/android/ble/rtk_linux_1/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi/ic_launcher.png",
+        "source": "/home/liangjf/zhd_work/android/ble/rtk_linux_1/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/liangjf/android_git/rtk_linux_1/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi/ic_launcher.png",
+        "source": "/home/liangjf/android_git/rtk_linux_1/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png"
+    }
+]

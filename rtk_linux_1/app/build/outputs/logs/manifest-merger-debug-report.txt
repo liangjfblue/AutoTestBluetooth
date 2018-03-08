@@ -1,0 +1,137 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /home/liangjf/zhd_work/android/ble/rtk_linux_1/app/src/main/AndroidManifest.xml:2:1-50:12
+	package
+		ADDED from /home/liangjf/zhd_work/android/ble/rtk_linux_1/app/src/main/AndroidManifest.xml:3:5-50
+		INJECTED from /home/liangjf/zhd_work/android/ble/rtk_linux_1/app/src/main/AndroidManifest.xml
+		INJECTED from /home/liangjf/zhd_work/android/ble/rtk_linux_1/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /home/liangjf/zhd_work/android/ble/rtk_linux_1/app/src/main/AndroidManifest.xml
+		INJECTED from /home/liangjf/zhd_work/android/ble/rtk_linux_1/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /home/liangjf/zhd_work/android/ble/rtk_linux_1/app/src/main/AndroidManifest.xml:2:11-69
+	android:versionCode
+		INJECTED from /home/liangjf/zhd_work/android/ble/rtk_linux_1/app/src/main/AndroidManifest.xml
+		INJECTED from /home/liangjf/zhd_work/android/ble/rtk_linux_1/app/src/main/AndroidManifest.xml
+uses-permission#android.permission.BLUETOOTH
+ADDED from /home/liangjf/zhd_work/android/ble/rtk_linux_1/app/src/main/AndroidManifest.xml:6:5-68
+	android:name
+		ADDED from /home/liangjf/zhd_work/android/ble/rtk_linux_1/app/src/main/AndroidManifest.xml:6:22-65
+uses-permission#android.permission.BLUETOOTH_ADMIN
+ADDED from /home/liangjf/zhd_work/android/ble/rtk_linux_1/app/src/main/AndroidManifest.xml:7:5-74
+	android:name
+		ADDED from /home/liangjf/zhd_work/android/ble/rtk_linux_1/app/src/main/AndroidManifest.xml:7:22-71
+uses-permission#android.permission.WAKE_LOCK
+ADDED from /home/liangjf/zhd_work/android/ble/rtk_linux_1/app/src/main/AndroidManifest.xml:8:5-68
+	android:name
+		ADDED from /home/liangjf/zhd_work/android/ble/rtk_linux_1/app/src/main/AndroidManifest.xml:8:22-65
+uses-permission#android.permission.MOUNT_UNMOUNT_FILESYSTEMS
+ADDED from /home/liangjf/zhd_work/android/ble/rtk_linux_1/app/src/main/AndroidManifest.xml:10:5-84
+	android:name
+		ADDED from /home/liangjf/zhd_work/android/ble/rtk_linux_1/app/src/main/AndroidManifest.xml:10:22-81
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from /home/liangjf/zhd_work/android/ble/rtk_linux_1/app/src/main/AndroidManifest.xml:11:5-81
+	android:name
+		ADDED from /home/liangjf/zhd_work/android/ble/rtk_linux_1/app/src/main/AndroidManifest.xml:11:22-78
+uses-permission#android.permission.VIBRATE
+ADDED from /home/liangjf/zhd_work/android/ble/rtk_linux_1/app/src/main/AndroidManifest.xml:14:5-65
+	android:name
+		ADDED from /home/liangjf/zhd_work/android/ble/rtk_linux_1/app/src/main/AndroidManifest.xml:14:22-63
+application
+ADDED from /home/liangjf/zhd_work/android/ble/rtk_linux_1/app/src/main/AndroidManifest.xml:17:5-48:19
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /home/liangjf/.android/build-cache/a7a5d969ea09328db3c5804ba50a60273951e283/output/AndroidManifest.xml:9:5-20
+MERGED from [com.android.support:design:26.0.0-alpha1] /home/liangjf/.android/build-cache/3c98c3e3cd90e71e133ded21db723db03e54259b/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:appcompat-v7:26.0.0-alpha1] /home/liangjf/.android/build-cache/f505c8527057fad43f17396ed55d340d144e3a5f/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:animated-vector-drawable:26.0.0-alpha1] /home/liangjf/.android/build-cache/9c27ee67d120c33e42aab4763b866cdbb4a157ff/output/AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:support-vector-drawable:26.0.0-alpha1] /home/liangjf/.android/build-cache/9f60e0a3df5282aace516d6c9557eb0f1a16ae92/output/AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:transition:26.0.0-alpha1] /home/liangjf/.android/build-cache/3e18e09037a35208d529a05c8d43779616f0e1fc/output/AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:support-v4:26.0.0-alpha1] /home/liangjf/.android/build-cache/999bfaa481d11c908445a1177b27538b05f238ea/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-media-compat:26.0.0-alpha1] /home/liangjf/.android/build-cache/52eb8ef0f80dad441b0fd61e3a26862dc17091a5/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-fragment:26.0.0-alpha1] /home/liangjf/.android/build-cache/db6db7a1d902b53075f38a49c5b4a5e8d00367a4/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-core-ui:26.0.0-alpha1] /home/liangjf/.android/build-cache/9f18215ba7033e75c9493227cc9a337bf0385b90/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-core-utils:26.0.0-alpha1] /home/liangjf/.android/build-cache/2c04b50c2e69a46971ca106f53ba8f27866d4783/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-compat:26.0.0-alpha1] /home/liangjf/.android/build-cache/3b3332e46b68287021e5407aea6fe722a75667f4/output/AndroidManifest.xml:29:5-20
+	android:label
+		ADDED from /home/liangjf/zhd_work/android/ble/rtk_linux_1/app/src/main/AndroidManifest.xml:20:9-41
+	android:supportsRtl
+		ADDED from /home/liangjf/zhd_work/android/ble/rtk_linux_1/app/src/main/AndroidManifest.xml:22:9-35
+	android:roundIcon
+		ADDED from /home/liangjf/zhd_work/android/ble/rtk_linux_1/app/src/main/AndroidManifest.xml:21:9-54
+	android:allowBackup
+		ADDED from /home/liangjf/zhd_work/android/ble/rtk_linux_1/app/src/main/AndroidManifest.xml:18:9-35
+	android:icon
+		ADDED from /home/liangjf/zhd_work/android/ble/rtk_linux_1/app/src/main/AndroidManifest.xml:19:9-43
+	android:theme
+		ADDED from /home/liangjf/zhd_work/android/ble/rtk_linux_1/app/src/main/AndroidManifest.xml:23:9-40
+activity#com.example.rtk_linux_1.rtk_linux_1.start
+ADDED from /home/liangjf/zhd_work/android/ble/rtk_linux_1/app/src/main/AndroidManifest.xml:26:9-32:20
+	android:name
+		ADDED from /home/liangjf/zhd_work/android/ble/rtk_linux_1/app/src/main/AndroidManifest.xml:26:19-40
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from /home/liangjf/zhd_work/android/ble/rtk_linux_1/app/src/main/AndroidManifest.xml:27:13-31:29
+action#android.intent.action.MAIN
+ADDED from /home/liangjf/zhd_work/android/ble/rtk_linux_1/app/src/main/AndroidManifest.xml:28:17-69
+	android:name
+		ADDED from /home/liangjf/zhd_work/android/ble/rtk_linux_1/app/src/main/AndroidManifest.xml:28:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /home/liangjf/zhd_work/android/ble/rtk_linux_1/app/src/main/AndroidManifest.xml:30:17-77
+	android:name
+		ADDED from /home/liangjf/zhd_work/android/ble/rtk_linux_1/app/src/main/AndroidManifest.xml:30:27-74
+activity#com.example.rtk_linux_1.rtk_linux_1.MainActivity
+ADDED from /home/liangjf/zhd_work/android/ble/rtk_linux_1/app/src/main/AndroidManifest.xml:35:9-50
+	android:name
+		ADDED from /home/liangjf/zhd_work/android/ble/rtk_linux_1/app/src/main/AndroidManifest.xml:35:19-47
+activity#com.example.rtk_linux_1.rtk_linux_1.DeviceListActivity
+ADDED from /home/liangjf/zhd_work/android/ble/rtk_linux_1/app/src/main/AndroidManifest.xml:38:9-41:59
+	android:label
+		ADDED from /home/liangjf/zhd_work/android/ble/rtk_linux_1/app/src/main/AndroidManifest.xml:40:13-35
+	android:theme
+		ADDED from /home/liangjf/zhd_work/android/ble/rtk_linux_1/app/src/main/AndroidManifest.xml:41:13-56
+	android:name
+		ADDED from /home/liangjf/zhd_work/android/ble/rtk_linux_1/app/src/main/AndroidManifest.xml:39:13-47
+uses-library#com.google.android.wearable
+ADDED from /home/liangjf/zhd_work/android/ble/rtk_linux_1/app/src/main/AndroidManifest.xml:43:9-45:40
+	android:required
+		ADDED from /home/liangjf/zhd_work/android/ble/rtk_linux_1/app/src/main/AndroidManifest.xml:45:13-37
+	android:name
+		ADDED from /home/liangjf/zhd_work/android/ble/rtk_linux_1/app/src/main/AndroidManifest.xml:44:13-55
+uses-sdk
+INJECTED from /home/liangjf/zhd_work/android/ble/rtk_linux_1/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /home/liangjf/.android/build-cache/a7a5d969ea09328db3c5804ba50a60273951e283/output/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:design:26.0.0-alpha1] /home/liangjf/.android/build-cache/3c98c3e3cd90e71e133ded21db723db03e54259b/output/AndroidManifest.xml:21:5-23:62
+MERGED from [com.android.support:appcompat-v7:26.0.0-alpha1] /home/liangjf/.android/build-cache/f505c8527057fad43f17396ed55d340d144e3a5f/output/AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:animated-vector-drawable:26.0.0-alpha1] /home/liangjf/.android/build-cache/9c27ee67d120c33e42aab4763b866cdbb4a157ff/output/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:26.0.0-alpha1] /home/liangjf/.android/build-cache/9f60e0a3df5282aace516d6c9557eb0f1a16ae92/output/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:26.0.0-alpha1] /home/liangjf/.android/build-cache/5689b45ceac9d3953e7cc9837cb55f612e845195/output/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:26.0.0-alpha1] /home/liangjf/.android/build-cache/3e18e09037a35208d529a05c8d43779616f0e1fc/output/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:26.0.0-alpha1] /home/liangjf/.android/build-cache/999bfaa481d11c908445a1177b27538b05f238ea/output/AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-media-compat:26.0.0-alpha1] /home/liangjf/.android/build-cache/52eb8ef0f80dad441b0fd61e3a26862dc17091a5/output/AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-fragment:26.0.0-alpha1] /home/liangjf/.android/build-cache/db6db7a1d902b53075f38a49c5b4a5e8d00367a4/output/AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-core-ui:26.0.0-alpha1] /home/liangjf/.android/build-cache/9f18215ba7033e75c9493227cc9a337bf0385b90/output/AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-utils:26.0.0-alpha1] /home/liangjf/.android/build-cache/2c04b50c2e69a46971ca106f53ba8f27866d4783/output/AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-compat:26.0.0-alpha1] /home/liangjf/.android/build-cache/3b3332e46b68287021e5407aea6fe722a75667f4/output/AndroidManifest.xml:21:5-23:58
+	tools:overrideLibrary
+		ADDED from [com.android.support:design:26.0.0-alpha1] /home/liangjf/.android/build-cache/3c98c3e3cd90e71e133ded21db723db03e54259b/output/AndroidManifest.xml:23:9-59
+	android:targetSdkVersion
+		INJECTED from /home/liangjf/zhd_work/android/ble/rtk_linux_1/app/src/main/AndroidManifest.xml
+		INJECTED from /home/liangjf/zhd_work/android/ble/rtk_linux_1/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /home/liangjf/zhd_work/android/ble/rtk_linux_1/app/src/main/AndroidManifest.xml
+		INJECTED from /home/liangjf/zhd_work/android/ble/rtk_linux_1/app/src/main/AndroidManifest.xml
+meta-data#android.support.VERSION
+ADDED from [com.android.support:design:26.0.0-alpha1] /home/liangjf/.android/build-cache/3c98c3e3cd90e71e133ded21db723db03e54259b/output/AndroidManifest.xml:25:5-27:41
+MERGED from [com.android.support:appcompat-v7:26.0.0-alpha1] /home/liangjf/.android/build-cache/f505c8527057fad43f17396ed55d340d144e3a5f/output/AndroidManifest.xml:25:5-27:41
+MERGED from [com.android.support:animated-vector-drawable:26.0.0-alpha1] /home/liangjf/.android/build-cache/9c27ee67d120c33e42aab4763b866cdbb4a157ff/output/AndroidManifest.xml:22:5-24:41
+MERGED from [com.android.support:support-vector-drawable:26.0.0-alpha1] /home/liangjf/.android/build-cache/9f60e0a3df5282aace516d6c9557eb0f1a16ae92/output/AndroidManifest.xml:22:5-24:41
+MERGED from [com.android.support:recyclerview-v7:26.0.0-alpha1] /home/liangjf/.android/build-cache/5689b45ceac9d3953e7cc9837cb55f612e845195/output/AndroidManifest.xml:22:5-24:41
+MERGED from [com.android.support:transition:26.0.0-alpha1] /home/liangjf/.android/build-cache/3e18e09037a35208d529a05c8d43779616f0e1fc/output/AndroidManifest.xml:22:5-24:41
+MERGED from [com.android.support:support-v4:26.0.0-alpha1] /home/liangjf/.android/build-cache/999bfaa481d11c908445a1177b27538b05f238ea/output/AndroidManifest.xml:25:5-27:41
+MERGED from [com.android.support:support-media-compat:26.0.0-alpha1] /home/liangjf/.android/build-cache/52eb8ef0f80dad441b0fd61e3a26862dc17091a5/output/AndroidManifest.xml:25:5-27:41
+MERGED from [com.android.support:support-fragment:26.0.0-alpha1] /home/liangjf/.android/build-cache/db6db7a1d902b53075f38a49c5b4a5e8d00367a4/output/AndroidManifest.xml:25:5-27:41
+MERGED from [com.android.support:support-core-ui:26.0.0-alpha1] /home/liangjf/.android/build-cache/9f18215ba7033e75c9493227cc9a337bf0385b90/output/AndroidManifest.xml:25:5-27:41
+MERGED from [com.android.support:support-core-utils:26.0.0-alpha1] /home/liangjf/.android/build-cache/2c04b50c2e69a46971ca106f53ba8f27866d4783/output/AndroidManifest.xml:25:5-27:41
+MERGED from [com.android.support:support-compat:26.0.0-alpha1] /home/liangjf/.android/build-cache/3b3332e46b68287021e5407aea6fe722a75667f4/output/AndroidManifest.xml:25:5-27:41
+	android:value
+		ADDED from [com.android.support:design:26.0.0-alpha1] /home/liangjf/.android/build-cache/3c98c3e3cd90e71e133ded21db723db03e54259b/output/AndroidManifest.xml:27:9-38
+	android:name
+		ADDED from [com.android.support:design:26.0.0-alpha1] /home/liangjf/.android/build-cache/3c98c3e3cd90e71e133ded21db723db03e54259b/output/AndroidManifest.xml:26:9-47

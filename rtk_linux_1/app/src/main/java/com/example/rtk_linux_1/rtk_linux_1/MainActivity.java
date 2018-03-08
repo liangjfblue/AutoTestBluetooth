@@ -62,6 +62,10 @@ public class MainActivity extends AppCompatActivity {
     private boolean Notic2AutoConn = false;
     private int Conn_Error_Num = 0;
     private int Error_Num = 0;
+
+    private int Num = 20; //因为每1分钟检测一次，2次就是2分钟
+    private int Interval = 60000; //重连时间间隔 60S
+
     //震动
     Vibrator vibrator;
 
@@ -100,6 +104,8 @@ public class MainActivity extends AppCompatActivity {
 
         new SocketAutoConnThread().start();
         new WatchServerSocketThread().start();
+
+        new ExitErrorThread().start();
     }
 
     @Override
@@ -129,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     String cmd_tmp = cmdInput.getText().toString();
                     outputstream = socket.getOutputStream();
-                    outputstream.write(cmd_tmp.getBytes("utf-8"));
+                    outputstream.write((cmd_tmp.trim()+"\r\n").getBytes("utf-8"));
                     outputstream.flush();
                     Looper.prepare();
                     Toast.makeText(MainActivity.this,"发送成功 cmd: "+cmd_tmp, Toast.LENGTH_SHORT).show();
@@ -154,9 +160,8 @@ public class MainActivity extends AppCompatActivity {
             while(true) {
                 if ( BleIsOKFlag && ServerSocketIsClose) {
                     //已经确认是连接断开
-                    BleIsOKFlag = false;
+                    //BleIsOKFlag = false;
                     ServerSocketIsClose = false;
-
                     Notic2AutoConn = true;
 
                     //UI更新
@@ -176,21 +181,49 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    //一直检测，如果出现2分钟内蓝牙连接不上就报错，直接退出
+    private class ExitErrorThread extends Thread {
+        @Override
+        public void run() {
+            while(true) { //一直检测，如果出现2分钟内蓝牙连接不上就报错，直接退出
+                if ( Conn_Error_Num > 0) {
+                    vibrator.vibrate(3000);//先震动再退出
+
+                    // TODO Auto-generated method stub
+                    SysApplication.getInstance().exit();
+
+                    //退出APP时先关闭资料和断开蓝牙-----?
+                    try {
+                        if ( (inputStream != null) || (outputstream != null)) {
+                            inputStream.close();
+                            outputstream.close();
+                        }
+                        if(socket != null)
+                            socket.close();
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+    }
+
     //socket尝试自动重连线程
     private class SocketAutoConnThread extends Thread {
         @Override
         public void run() {
             while(true) {
                 if( SocketautoConn && Notic2AutoConn) {
-                    Notic2AutoConn = false;
+                    //Notic2AutoConn = false;
+                    //ServerSocketIsClose = false;
                     //建立客户端的socket
                     try {
-
                         socket = device.createRfcommSocketToServiceRecord(UUID.fromString(SPP_UUID));
                         socket.connect();
                     } catch (IOException e) {
                         Error_Num++;
-                        if(Error_Num > 5) {
+                        if(Error_Num > Num) {
                             Error_Num = 0;
                             Conn_Error_Num++;
                             vibrator.vibrate(1000);
@@ -198,25 +231,44 @@ public class MainActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
 
-                    timer = new Timer();
-                    timerTask = new MyTimerTask();
-                    timer.schedule(timerTask, 10000);//定时10S后自动发送输入框的RTK控制命令.10S内输入命令,10S后发送
+                    if (socket.isConnected()) {
+                        Notic2AutoConn = false;
+                        BleIsOKFlag = true;
 
-                    BleIsOKFlag = true;
+                        timer = new Timer();
+                        timerTask = new MyTimerTask();
+                        timer.schedule(timerTask, Interval);//定时10S后自动发送输入框的RTK控制命令.10S内输入命令,10S后发送
 
-                    //UI更新
-                    new Thread() {
-                        @Override
-                        public void run() {
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    ConnFlag.setText("已连接");
-                                    Connect_Error_Num.setText(String.valueOf(Conn_Error_Num));
-                                }
-                            });
-                        }
-                    }.start();
+                        //UI更新
+                        new Thread() {
+                            @Override
+                            public void run() {
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        ConnFlag.setText("已连接");
+                                        //Connect_Error_Num.setText(String.valueOf(Conn_Error_Num));
+                                    }
+                                });
+                            }
+                        }.start();
+                    }
+
+                    if (Conn_Error_Num > 0) {
+                        //UI更新
+                        new Thread() {
+                            @Override
+                            public void run() {
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        //ConnFlag.setText("已连接");
+                                        Connect_Error_Num.setText(String.valueOf(Conn_Error_Num));
+                                    }
+                                });
+                            }
+                        }.start();
+                    }
 
                     //开启线程接受蓝牙数据
                     try {
@@ -335,7 +387,7 @@ public class MainActivity extends AppCompatActivity {
                         socket.connect();
                     } catch (IOException e) {
                         Error_Num++;
-                        if(Error_Num > 5) {
+                        if(Error_Num > Num) {
                             Error_Num = 0;
                             Conn_Error_Num++;
                             vibrator.vibrate(1000);
@@ -343,23 +395,32 @@ public class MainActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
 
-                    new Thread() {
-                        @Override
-                        public void run() {
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    ConnFlag.setText("已连接");
-                                    Connect_Error_Num.setText(String.valueOf(Conn_Error_Num));
-                                }
-                            });
-                        }
-                    }.start();
-
-                    //每次重连后启动定时任务
-                    timer = new Timer();
-                    timerTask = new MyTimerTask();
-                    timer.schedule(timerTask, 10000);//定时5S后自动发送输入框的RTK控制命令.10S内输入命令,10S后发送
+                    if (socket.isConnected()) {
+                        new Thread() {
+                            @Override
+                            public void run() {
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        ConnFlag.setText("已连接");
+                                    }
+                                });
+                            }
+                        }.start();
+                    }
+                    if (Conn_Error_Num > 0) {
+                        new Thread() {
+                            @Override
+                            public void run() {
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Connect_Error_Num.setText(String.valueOf(Conn_Error_Num));
+                                    }
+                                });
+                            }
+                        }.start();
+                    }
 
                     SocketautoConn = true;
 
@@ -418,7 +479,9 @@ public class MainActivity extends AppCompatActivity {
 
                         /*String result = msg.getData().get("msg").toString();
                         String showstr = "";
-                        showstr = showstr + result;*/
+                        showstr = showstr + result;
+
+                        cmdInput.setText(showstr);*/
 
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -473,7 +536,7 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     String cmd_tmp = cmdInput.getText().toString();
                     outputstream = socket.getOutputStream();
-                    outputstream.write(cmd_tmp.getBytes("utf-8"));
+                    outputstream.write((cmd_tmp.trim()+"\r\n").getBytes("utf-8"));
                     outputstream.flush();
                     Toast.makeText(MainActivity.this,"发送成功 cmd: "+cmd_tmp, Toast.LENGTH_SHORT).show();
                 } catch (IOException e) {

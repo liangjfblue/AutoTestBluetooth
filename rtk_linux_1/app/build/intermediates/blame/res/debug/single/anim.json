@@ -1,0 +1,146 @@
+[
+    {
+        "merged": "/home/liangjf/AndroidStudioProjects/rtk_linux_1/app/build/intermediates/res/merged/debug/anim/abc_slide_in_top.xml",
+        "source": "/home/liangjf/.android/build-cache/f505c8527057fad43f17396ed55d340d144e3a5f/output/res/anim/abc_slide_in_top.xml"
+    },
+    {
+        "merged": "/home/liangjf/AndroidStudioProjects/rtk_linux_1/app/build/intermediates/res/merged/debug/anim/abc_slide_in_bottom.xml",
+        "source": "/home/liangjf/.android/build-cache/f505c8527057fad43f17396ed55d340d144e3a5f/output/res/anim/abc_slide_in_bottom.xml"
+    },
+    {
+        "merged": "/home/liangjf/android_git/rtk_linux_1/app/build/intermediates/res/merged/debug/anim/abc_fade_out.xml",
+        "source": "/home/liangjf/.android/build-cache/f505c8527057fad43f17396ed55d340d144e3a5f/output/res/anim/abc_fade_out.xml"
+    },
+    {
+        "merged": "/home/liangjf/android_git/rtk_linux_1/app/build/intermediates/res/merged/debug/anim/abc_grow_fade_in_from_bottom.xml",
+        "source": "/home/liangjf/.android/build-cache/f505c8527057fad43f17396ed55d340d144e3a5f/output/res/anim/abc_grow_fade_in_from_bottom.xml"
+    },
+    {
+        "merged": "/home/liangjf/AndroidStudioProjects/rtk_linux_1/app/build/intermediates/res/merged/debug/anim/abc_shrink_fade_out_from_bottom.xml",
+        "source": "/home/liangjf/.android/build-cache/f505c8527057fad43f17396ed55d340d144e3a5f/output/res/anim/abc_shrink_fade_out_from_bottom.xml"
+    },
+    {
+        "merged": "/home/liangjf/zhd_work/android/ble/rtk_linux_1/app/build/intermediates/res/merged/debug/anim/design_snackbar_in.xml",
+        "source": "/home/liangjf/.android/build-cache/3c98c3e3cd90e71e133ded21db723db03e54259b/output/res/anim/design_snackbar_in.xml"
+    },
+    {
+        "merged": "/home/liangjf/zhd_work/android/ble/rtk_linux_1/app/build/intermediates/res/merged/debug/anim/abc_slide_out_bottom.xml",
+        "source": "/home/liangjf/.android/build-cache/f505c8527057fad43f17396ed55d340d144e3a5f/output/res/anim/abc_slide_out_bottom.xml"
+    },
+    {
+        "merged": "/home/liangjf/zhd_work/android/ble/rtk_linux_1/app/build/intermediates/res/merged/debug/anim/abc_slide_in_top.xml",
+        "source": "/home/liangjf/.android/build-cache/f505c8527057fad43f17396ed55d340d144e3a5f/output/res/anim/abc_slide_in_top.xml"
+    },
+    {
+        "merged": "/home/liangjf/AndroidStudioProjects/rtk_linux_1/app/build/intermediates/res/merged/debug/anim/abc_popup_exit.xml",
+        "source": "/home/liangjf/.android/build-cache/f505c8527057fad43f17396ed55d340d144e3a5f/output/res/anim/abc_popup_exit.xml"
+    },
+    {
+        "merged": "/home/liangjf/android_git/rtk_linux_1/app/build/intermediates/res/merged/debug/anim/abc_slide_out_bottom.xml",
+        "source": "/home/liangjf/.android/build-cache/f505c8527057fad43f17396ed55d340d144e3a5f/output/res/anim/abc_slide_out_bottom.xml"
+    },
+    {
+        "merged": "/home/liangjf/AndroidStudioProjects/rtk_linux_1/app/build/intermediates/res/merged/debug/anim/abc_fade_in.xml",
+        "source": "/home/liangjf/.android/build-cache/f505c8527057fad43f17396ed55d340d144e3a5f/output/res/anim/abc_fade_in.xml"
+    },
+    {
+        "merged": "/home/liangjf/zhd_work/android/ble/rtk_linux_1/app/build/intermediates/res/merged/debug/anim/abc_shrink_fade_out_from_bottom.xml",
+        "source": "/home/liangjf/.android/build-cache/f505c8527057fad43f17396ed55d340d144e3a5f/output/res/anim/abc_shrink_fade_out_from_bottom.xml"
+    },
+    {
+        "merged": "/home/liangjf/android_git/rtk_linux_1/app/build/intermediates/res/merged/debug/anim/abc_slide_out_top.xml",
+        "source": "/home/liangjf/.android/build-cache/f505c8527057fad43f17396ed55d340d144e3a5f/output/res/anim/abc_slide_out_top.xml"
+    },
+    {
+        "merged": "/home/liangjf/android_git/rtk_linux_1/app/build/intermediates/res/merged/debug/anim/abc_popup_exit.xml",
+        "source": "/home/liangjf/.android/build-cache/f505c8527057fad43f17396ed55d340d144e3a5f/output/res/anim/abc_popup_exit.xml"
+    },
+    {
+        "merged": "/home/liangjf/zhd_work/android/ble/rtk_linux_1/app/build/intermediates/res/merged/debug/anim/abc_slide_in_bottom.xml",
+        "source": "/home/liangjf/.android/build-cache/f505c8527057fad43f17396ed55d340d144e3a5f/output/res/anim/abc_slide_in_bottom.xml"
+    },
+    {
+        "merged": "/home/liangjf/zhd_work/android/ble/rtk_linux_1/app/build/intermediates/res/merged/debug/anim/abc_popup_enter.xml",
+        "source": "/home/liangjf/.android/build-cache/f505c8527057fad43f17396ed55d340d144e3a5f/output/res/anim/abc_popup_enter.xml"
+    },
+    {
+        "merged": "/home/liangjf/AndroidStudioProjects/rtk_linux_1/app/build/intermediates/res/merged/debug/anim/abc_slide_out_bottom.xml",
+        "source": "/home/liangjf/.android/build-cache/f505c8527057fad43f17396ed55d340d144e3a5f/output/res/anim/abc_slide_out_bottom.xml"
+    },
+    {
+        "merged": "/home/liangjf/zhd_work/android/ble/rtk_linux_1/app/build/intermediates/res/merged/debug/anim/abc_grow_fade_in_from_bottom.xml",
+        "source": "/home/liangjf/.android/build-cache/f505c8527057fad43f17396ed55d340d144e3a5f/output/res/anim/abc_grow_fade_in_from_bottom.xml"
+    },
+    {
+        "merged": "/home/liangjf/AndroidStudioProjects/rtk_linux_1/app/build/intermediates/res/merged/debug/anim/design_snackbar_in.xml",
+        "source": "/home/liangjf/.android/build-cache/3c98c3e3cd90e71e133ded21db723db03e54259b/output/res/anim/design_snackbar_in.xml"
+    },
+    {
+        "merged": "/home/liangjf/zhd_work/android/ble/rtk_linux_1/app/build/intermediates/res/merged/debug/anim/abc_fade_out.xml",
+        "source": "/home/liangjf/.android/build-cache/f505c8527057fad43f17396ed55d340d144e3a5f/output/res/anim/abc_fade_out.xml"
+    },
+    {
+        "merged": "/home/liangjf/AndroidStudioProjects/rtk_linux_1/app/build/intermediates/res/merged/debug/anim/design_snackbar_out.xml",
+        "source": "/home/liangjf/.android/build-cache/3c98c3e3cd90e71e133ded21db723db03e54259b/output/res/anim/design_snackbar_out.xml"
+    },
+    {
+        "merged": "/home/liangjf/android_git/rtk_linux_1/app/build/intermediates/res/merged/debug/anim/abc_shrink_fade_out_from_bottom.xml",
+        "source": "/home/liangjf/.android/build-cache/f505c8527057fad43f17396ed55d340d144e3a5f/output/res/anim/abc_shrink_fade_out_from_bottom.xml"
+    },
+    {
+        "merged": "/home/liangjf/android_git/rtk_linux_1/app/build/intermediates/res/merged/debug/anim/abc_slide_in_bottom.xml",
+        "source": "/home/liangjf/.android/build-cache/f505c8527057fad43f17396ed55d340d144e3a5f/output/res/anim/abc_slide_in_bottom.xml"
+    },
+    {
+        "merged": "/home/liangjf/zhd_work/android/ble/rtk_linux_1/app/build/intermediates/res/merged/debug/anim/abc_popup_exit.xml",
+        "source": "/home/liangjf/.android/build-cache/f505c8527057fad43f17396ed55d340d144e3a5f/output/res/anim/abc_popup_exit.xml"
+    },
+    {
+        "merged": "/home/liangjf/AndroidStudioProjects/rtk_linux_1/app/build/intermediates/res/merged/debug/anim/abc_fade_out.xml",
+        "source": "/home/liangjf/.android/build-cache/f505c8527057fad43f17396ed55d340d144e3a5f/output/res/anim/abc_fade_out.xml"
+    },
+    {
+        "merged": "/home/liangjf/AndroidStudioProjects/rtk_linux_1/app/build/intermediates/res/merged/debug/anim/abc_grow_fade_in_from_bottom.xml",
+        "source": "/home/liangjf/.android/build-cache/f505c8527057fad43f17396ed55d340d144e3a5f/output/res/anim/abc_grow_fade_in_from_bottom.xml"
+    },
+    {
+        "merged": "/home/liangjf/android_git/rtk_linux_1/app/build/intermediates/res/merged/debug/anim/abc_popup_enter.xml",
+        "source": "/home/liangjf/.android/build-cache/f505c8527057fad43f17396ed55d340d144e3a5f/output/res/anim/abc_popup_enter.xml"
+    },
+    {
+        "merged": "/home/liangjf/zhd_work/android/ble/rtk_linux_1/app/build/intermediates/res/merged/debug/anim/abc_slide_out_top.xml",
+        "source": "/home/liangjf/.android/build-cache/f505c8527057fad43f17396ed55d340d144e3a5f/output/res/anim/abc_slide_out_top.xml"
+    },
+    {
+        "merged": "/home/liangjf/zhd_work/android/ble/rtk_linux_1/app/build/intermediates/res/merged/debug/anim/abc_fade_in.xml",
+        "source": "/home/liangjf/.android/build-cache/f505c8527057fad43f17396ed55d340d144e3a5f/output/res/anim/abc_fade_in.xml"
+    },
+    {
+        "merged": "/home/liangjf/AndroidStudioProjects/rtk_linux_1/app/build/intermediates/res/merged/debug/anim/abc_slide_out_top.xml",
+        "source": "/home/liangjf/.android/build-cache/f505c8527057fad43f17396ed55d340d144e3a5f/output/res/anim/abc_slide_out_top.xml"
+    },
+    {
+        "merged": "/home/liangjf/android_git/rtk_linux_1/app/build/intermediates/res/merged/debug/anim/abc_slide_in_top.xml",
+        "source": "/home/liangjf/.android/build-cache/f505c8527057fad43f17396ed55d340d144e3a5f/output/res/anim/abc_slide_in_top.xml"
+    },
+    {
+        "merged": "/home/liangjf/android_git/rtk_linux_1/app/build/intermediates/res/merged/debug/anim/design_snackbar_out.xml",
+        "source": "/home/liangjf/.android/build-cache/3c98c3e3cd90e71e133ded21db723db03e54259b/output/res/anim/design_snackbar_out.xml"
+    },
+    {
+        "merged": "/home/liangjf/AndroidStudioProjects/rtk_linux_1/app/build/intermediates/res/merged/debug/anim/abc_popup_enter.xml",
+        "source": "/home/liangjf/.android/build-cache/f505c8527057fad43f17396ed55d340d144e3a5f/output/res/anim/abc_popup_enter.xml"
+    },
+    {
+        "merged": "/home/liangjf/android_git/rtk_linux_1/app/build/intermediates/res/merged/debug/anim/abc_fade_in.xml",
+        "source": "/home/liangjf/.android/build-cache/f505c8527057fad43f17396ed55d340d144e3a5f/output/res/anim/abc_fade_in.xml"
+    },
+    {
+        "merged": "/home/liangjf/zhd_work/android/ble/rtk_linux_1/app/build/intermediates/res/merged/debug/anim/design_snackbar_out.xml",
+        "source": "/home/liangjf/.android/build-cache/3c98c3e3cd90e71e133ded21db723db03e54259b/output/res/anim/design_snackbar_out.xml"
+    },
+    {
+        "merged": "/home/liangjf/android_git/rtk_linux_1/app/build/intermediates/res/merged/debug/anim/design_snackbar_in.xml",
+        "source": "/home/liangjf/.android/build-cache/3c98c3e3cd90e71e133ded21db723db03e54259b/output/res/anim/design_snackbar_in.xml"
+    }
+]
