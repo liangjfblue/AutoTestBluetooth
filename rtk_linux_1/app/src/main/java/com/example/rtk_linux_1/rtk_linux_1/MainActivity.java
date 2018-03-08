@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
     private int Conn_Error_Num = 0;
     private int Error_Num = 0;
 
-    private int Num = 20; //因为每1分钟检测一次，2次就是2分钟
+    private int Num = 22; //因为每1分钟检测一次，2次就是2分钟
     private int Interval = 60000; //重连时间间隔 60S
 
     //震动
@@ -104,8 +104,6 @@ public class MainActivity extends AppCompatActivity {
 
         new SocketAutoConnThread().start();
         new WatchServerSocketThread().start();
-
-        new ExitErrorThread().start();
     }
 
     @Override
@@ -181,34 +179,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    //一直检测，如果出现2分钟内蓝牙连接不上就报错，直接退出
-    private class ExitErrorThread extends Thread {
-        @Override
-        public void run() {
-            while(true) { //一直检测，如果出现2分钟内蓝牙连接不上就报错，直接退出
-                if ( Conn_Error_Num > 0) {
-                    vibrator.vibrate(3000);//先震动再退出
-
-                    // TODO Auto-generated method stub
-                    SysApplication.getInstance().exit();
-
-                    //退出APP时先关闭资料和断开蓝牙-----?
-                    try {
-                        if ( (inputStream != null) || (outputstream != null)) {
-                            inputStream.close();
-                            outputstream.close();
-                        }
-                        if(socket != null)
-                            socket.close();
-
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }
-    }
-
     //socket尝试自动重连线程
     private class SocketAutoConnThread extends Thread {
         @Override
@@ -269,6 +239,21 @@ public class MainActivity extends AppCompatActivity {
                             }
                         }.start();
                     }
+                    //BleIsOKFlag = true;
+
+                    //UI更新
+                    /*new Thread() {
+                        @Override
+                        public void run() {
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    ConnFlag.setText("已连接");
+                                    Connect_Error_Num.setText(String.valueOf(Conn_Error_Num));
+                                }
+                            });
+                        }
+                    }.start();*/
 
                     //开启线程接受蓝牙数据
                     try {
@@ -395,19 +380,6 @@ public class MainActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
 
-                    if (socket.isConnected()) {
-                        new Thread() {
-                            @Override
-                            public void run() {
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        ConnFlag.setText("已连接");
-                                    }
-                                });
-                            }
-                        }.start();
-                    }
                     if (Conn_Error_Num > 0) {
                         new Thread() {
                             @Override
@@ -415,12 +387,18 @@ public class MainActivity extends AppCompatActivity {
                                 runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
+                                        ConnFlag.setText("已连接");
                                         Connect_Error_Num.setText(String.valueOf(Conn_Error_Num));
                                     }
                                 });
                             }
                         }.start();
                     }
+
+                    //每次重连后启动定时任务
+                    /*timer = new Timer();
+                    timerTask = new MyTimerTask();
+                    timer.schedule(timerTask, Interval);//连接上蓝牙60S后自动发送输入框的RTK控制命令.(注意首次要10S内手动输入命令)*/
 
                     SocketautoConn = true;
 
