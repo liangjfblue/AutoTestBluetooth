@@ -1922,7 +1922,7 @@
         <item>low</item>
         <item>mid</item>
         <item>high</item>
-    </string-array><string name="channel">频道</string><string name="title_activity_channel">通信协议</string><string name="app_name">rtk_linux_1</string><string name="password">密码 </string><string-array name="more_array">
+    </string-array><string name="channel">频道</string><string name="title_activity_channel">通信协议</string><string name="app_name">liangjf</string><string name="password">密码 </string><string-array name="more_array">
         <item>更多</item>
         <item>查看原始数据</item>
         <item>TCP下载数据</item>

@@ -13,14 +13,27 @@ import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
+import android.content.Context;
+import android.database.Cursor;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Looper;
 import android.os.Vibrator;
+import android.provider.MediaStore;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -47,27 +60,42 @@ public class MainActivity extends AppCompatActivity {
     BluetoothDevice device = null;
     BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
     private final static int REQUEST_CONNECT_DEVICE = 1;
+    private final static int REQUEST_SEND_FILE = 2;
 
     private static final String SPP_UUID = "00001101-0000-1000-8000-00805F9B34FB";
 
-    private TextView Connect_Error_Num;
+    private Button send_file;
     private TextView cmdInput;
     private TextView ConnFlag;
     private String remote_ble_address = null; //用于存储已连接蓝牙的地址
     private Timer timer;
     private TimerTask timerTask;
-    private boolean SocketautoConn = false;
     private boolean BleIsOKFlag = false;
     private boolean ServerSocketIsClose = false;
-    private boolean Notic2AutoConn = false;
     private int Conn_Error_Num = 0;
     private int Error_Num = 0;
 
-    private int Num = 22; //因为每1分钟检测一次，2次就是2分钟
-    private int Interval = 60000; //重连时间间隔 60S
+    private int Num = 30; //因为每1分钟检测一次，2次就是2分钟
+    private int Interval = 8000; //重连时间间隔 60S
+
+    private int conn_status = 0;
+
+    private Timer CloseSockettimer;
+    private TimerTask CloseSockettimerTask;
 
     //震动
     Vibrator vibrator;
+
+    private boolean HasSendOver = false;
+
+    //发送文件
+    private Uri uri;
+    private String real_path = null;
+    private boolean canSendFile = false;
+    private InputStream AutoSendFileinputStream;
+    private boolean canSend = false;
+    private InputStreamReader inputStreamReader;
+    private BufferedReader bufferedReader;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +103,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         SysApplication.getInstance().addActivity(this);
-
 
         Button btn_exit1 = (Button)findViewById(R.id.exit_new);
         btn_exit1.setOnClickListener(new ExitAPP());
@@ -94,16 +121,18 @@ public class MainActivity extends AppCompatActivity {
 
         ConnFlag = (TextView)findViewById(R.id.connect_flag);
 
-        Connect_Error_Num = (TextView)findViewById(R.id.connect_error_num);
-
-        Button clean_num = (Button)findViewById(R.id.clean_num);
-        clean_num.setOnClickListener(new CleanNum());
-
         //震动
         vibrator = (Vibrator)this.getSystemService(this.VIBRATOR_SERVICE);
 
-        new SocketAutoConnThread().start();
+        //选择文件发送
+        send_file = (Button)findViewById(R.id.send_file);
+        send_file.setOnClickListener(new SendFile());
+
         new WatchServerSocketThread().start();
+        new ErrorThread().start();
+        new SendFileThread().start();
+
+        //new AutoSendFileThread().start();
     }
 
     @Override
@@ -151,64 +180,75 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    //监听服务器socket线程——检测对方设备是否主动断开蓝牙连接
-    private class WatchServerSocketThread extends Thread {
+
+    private class CloseSocketTimerTask extends TimerTask {
         @Override
         public void run() {
             while(true) {
-                if ( BleIsOKFlag && ServerSocketIsClose) {
-                    //已经确认是连接断开
-                    //BleIsOKFlag = false;
-                    ServerSocketIsClose = false;
-                    Notic2AutoConn = true;
+                if (socket.isConnected()) {
+                    try {
+                        inputStreamReader.close();
+                        bufferedReader.close();
+                        AutoSendFileinputStream.close();
+                        canSend = false;
+                        socket.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
 
-                    //UI更新
-                    new Thread() {
-                        @Override
-                        public void run() {
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    ConnFlag.setText("未连接");
-                                }
-                            });
-                        }
-                    }.start();
+                    ServerSocketIsClose = true;
                 }
             }
         }
     }
 
-    //socket尝试自动重连线程
-    private class SocketAutoConnThread extends Thread {
+    //监听服务器socket线程——检测对方设备是否主动断开蓝牙连接
+    private class WatchServerSocketThread extends Thread {
         @Override
         public void run() {
             while(true) {
-                if( SocketautoConn && Notic2AutoConn) {
-                    //Notic2AutoConn = false;
-                    //ServerSocketIsClose = false;
-                    //建立客户端的socket
-                    try {
-                        socket = device.createRfcommSocketToServiceRecord(UUID.fromString(SPP_UUID));
-                        socket.connect();
-                    } catch (IOException e) {
-                        Error_Num++;
-                        if(Error_Num > Num) {
-                            Error_Num = 0;
-                            Conn_Error_Num++;
-                            vibrator.vibrate(1000);
+                switch (conn_status) {
+                    case 0: //检测
+                        if ( BleIsOKFlag && ServerSocketIsClose) {
+                            //已经确认是连接断开
+                            ServerSocketIsClose = false;
+                            //UI更新
+                            new Thread() {
+                                @Override
+                                public void run() {
+                                    runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            ConnFlag.setText("未连接");
+                                        }
+                                    });
+                                }
+                            }.start();
+                            conn_status = 1;
                         }
-                        e.printStackTrace();
-                    }
+                        break;
 
-                    if (socket.isConnected()) {
-                        Notic2AutoConn = false;
-                        BleIsOKFlag = true;
+                    case 1: //重连
+                        //建立客户端的socket
+                        try {
+                            socket = device.createRfcommSocketToServiceRecord(UUID.fromString(SPP_UUID));
+                            socket.connect();
+                        } catch (IOException e) {
+                            Error_Num++;
+                            if(Error_Num > Num) {
+                                Error_Num = 0;
+                                Conn_Error_Num++;
+                            }
+                            e.printStackTrace();
 
+                            //注意注意[既然没连接成功，没必要执行下面的代码了]
+                            continue;
+                        }
+
+                        Error_Num = 0;
                         timer = new Timer();
                         timerTask = new MyTimerTask();
-                        timer.schedule(timerTask, Interval);//定时10S后自动发送输入框的RTK控制命令.10S内输入命令,10S后发送
-
+                        timer.schedule(timerTask, Interval);
                         //UI更新
                         new Thread() {
                             @Override
@@ -217,74 +257,162 @@ public class MainActivity extends AppCompatActivity {
                                     @Override
                                     public void run() {
                                         ConnFlag.setText("已连接");
-                                        //Connect_Error_Num.setText(String.valueOf(Conn_Error_Num));
                                     }
                                 });
                             }
                         }.start();
-                    }
+                        //开启线程接受蓝牙数据
+                        try {
+                            inputStream = socket.getInputStream();
+                            new BLEInput().start();
 
-                    if (Conn_Error_Num > 0) {
-                        //UI更新
-                        new Thread() {
-                            @Override
-                            public void run() {
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        //ConnFlag.setText("已连接");
-                                        Connect_Error_Num.setText(String.valueOf(Conn_Error_Num));
-                                    }
-                                });
-                            }
-                        }.start();
-                    }
-                    //BleIsOKFlag = true;
-
-                    //UI更新
-                    /*new Thread() {
-                        @Override
-                        public void run() {
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    ConnFlag.setText("已连接");
-                                    Connect_Error_Num.setText(String.valueOf(Conn_Error_Num));
-                                }
-                            });
+                        } catch (IOException e) {
+                            e.printStackTrace();
                         }
-                    }.start();*/
 
-                    //开启线程接受蓝牙数据
+                        //再次检测
+                        conn_status = 0;
+                        break;
+
+                    default: //默认
+                        System.out.print("nothing to do...");
+                        break;
+                }
+            }
+        }
+    }
+
+    //socket未连接退出
+    private class ErrorThread extends Thread {
+        @Override
+        public void run() {
+            while(true) {
+                if (Conn_Error_Num > 0) {
+                    vibrator.vibrate(3000);
+
                     try {
-                        inputStream = socket.getInputStream();
-                        new BLEInput().start();
+                        if (inputStream != null) {
+                            inputStream.close();
+                            outputstream.close();
+                        }
+                        if (socket != null) {
+                            socket.close();
+                            Toast.makeText(MainActivity.this, "超过2分钟没连接上", Toast.LENGTH_LONG).show();
+                        }
 
-                    } catch (IOException e) {
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
             }
-
         }
     }
 
-    //清除失败次数计数按键响应
-    private class CleanNum implements OnClickListener {
+    //socket未连接退出
+    private class SendFileThread extends Thread {
+        String content = "";
+        @RequiresApi(api = Build.VERSION_CODES.O)
         @Override
-        public void onClick(View v) {
-            Conn_Error_Num = 0;
-            new Thread() {
-                @Override
-                public void run() {
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            Connect_Error_Num.setText(String.valueOf(Conn_Error_Num));
+        public void run() {
+            while(true) {
+                if ( canSendFile ) {
+                    canSendFile = false;
+                    try {
+                        if ("content".equalsIgnoreCase(uri.getScheme())) {
+                            String[] projection = { "_data" };
+                            Cursor cursor;
+                            try {
+                                cursor = getContentResolver().query(uri, projection, null, null, null);
+                                int column_index = cursor.getColumnIndexOrThrow("_data");
+                                if (cursor.moveToFirst()) {
+                                    real_path = cursor.getString(column_index);
+                                }
+                            } catch (Exception e) {
+                                Log.d("TAG", "get real_path error");
+                            }
+                        } else if ("file".equalsIgnoreCase(uri.getScheme())) {
+                            real_path =  uri.getPath();
                         }
-                    });
+
+                        Log.d("TAG", real_path);
+
+                        File f = new File(real_path);
+                        AutoSendFileinputStream = new FileInputStream(f);
+
+                        InputStreamReader inputStreamReader = new InputStreamReader(AutoSendFileinputStream);
+                        BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+                        String line;
+                        outputstream = socket.getOutputStream();
+
+                        while ((line = bufferedReader.readLine()) != null) {
+                            content += line+"\n";
+                            outputstream.write(content.getBytes("utf-8"));
+                            outputstream.flush();
+                            content = "";
+                        }
+                        AutoSendFileinputStream.close();
+
+                        HasSendOver = true;
+
+                        Looper.prepare();
+                        Toast.makeText(MainActivity.this,"发送文件成功", Toast.LENGTH_LONG).show();
+                        Looper.loop();
+                    } catch (IOException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
                 }
-            }.start();
+            }
+        }
+    }
+
+
+    private class AutoSendFileThread extends Thread {
+        String content = "";
+        @Override
+        public void run() {
+            while(true) {
+                if ( HasSendOver ) {    //经过第一次手动发送文件后才开始自动化测试
+                    try {
+                        sleep(15);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
+                    try {
+
+                        Log.d("AutoSendFileThread TAG", real_path);
+
+                        File f = new File(real_path);
+                        AutoSendFileinputStream = new FileInputStream(f);
+                        inputStreamReader = new InputStreamReader(AutoSendFileinputStream);
+                        bufferedReader = new BufferedReader(inputStreamReader);
+                        String line;
+                        outputstream = socket.getOutputStream();
+
+                        CloseSockettimer = new Timer();
+                        CloseSockettimerTask = new CloseSocketTimerTask();
+                        CloseSockettimer.schedule(CloseSockettimerTask, 5); //发送8秒就关闭inputStream.close();
+
+                        canSend = true;
+
+                        while ( canSend && ((line = bufferedReader.readLine()) != null)) {
+                            content += line+"\n";
+                            outputstream.write(content.getBytes("utf-8"));
+                            outputstream.flush();
+                            content = "";
+                        }
+                        //AutoSendFileinputStream.close();
+
+                        Looper.prepare();
+                        Toast.makeText(MainActivity.this,"发送文件成功", Toast.LENGTH_LONG).show();
+                        Looper.loop();
+                    } catch (IOException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
+                }
+            }
         }
     }
 
@@ -305,6 +433,17 @@ public class MainActivity extends AppCompatActivity {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    //跳转去选择文件发送
+    private class SendFile implements OnClickListener {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+            intent.setType("*/*");
+            intent.addCategory(Intent.CATEGORY_OPENABLE);
+            startActivityForResult(intent, REQUEST_SEND_FILE);
         }
     }
 
@@ -371,16 +510,10 @@ public class MainActivity extends AppCompatActivity {
                         socket = device.createRfcommSocketToServiceRecord(UUID.fromString(SPP_UUID));
                         socket.connect();
                     } catch (IOException e) {
-                        Error_Num++;
-                        if(Error_Num > Num) {
-                            Error_Num = 0;
-                            Conn_Error_Num++;
-                            vibrator.vibrate(1000);
-                        }
                         e.printStackTrace();
                     }
 
-                    if (Conn_Error_Num > 0) {
+                    if (socket.isConnected()) {
                         new Thread() {
                             @Override
                             public void run() {
@@ -388,19 +521,11 @@ public class MainActivity extends AppCompatActivity {
                                     @Override
                                     public void run() {
                                         ConnFlag.setText("已连接");
-                                        Connect_Error_Num.setText(String.valueOf(Conn_Error_Num));
                                     }
                                 });
                             }
                         }.start();
                     }
-
-                    //每次重连后启动定时任务
-                    /*timer = new Timer();
-                    timerTask = new MyTimerTask();
-                    timer.schedule(timerTask, Interval);//连接上蓝牙60S后自动发送输入框的RTK控制命令.(注意首次要10S内手动输入命令)*/
-
-                    SocketautoConn = true;
 
                     //用于判断建立socket连接后判断输入来监听对方设备是否断开
                     BleIsOKFlag = true;
@@ -413,6 +538,15 @@ public class MainActivity extends AppCompatActivity {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
+                }
+                break;
+            case REQUEST_SEND_FILE:
+                if (resultCode == Activity.RESULT_OK) {
+                    uri = data.getData();
+
+                    Log.d("TAG", uri.toString());
+
+                    canSendFile = true;
                 }
                 break;
 
@@ -443,60 +577,24 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    //中断机制接收消息处理
-    Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            switch (msg.what) {
-                case 2:
-                    //修改，增加异常捕捉处理，避免因为原有逻辑截取字符串造成问题
-                    try {
-                        //在控制台输出接收到的数据，方便调试查看
-                        //System.out.println("msg.getData: "+msg.getData().get("msg"));
-
-                        /*String result = msg.getData().get("msg").toString();
-                        String showstr = "";
-                        showstr = showstr + result;
-
-                        cmdInput.setText(showstr);*/
-
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    break;
-
-                default:
-                    break;
-            }
-        }
-    };
 
     //蓝牙接收线程
     private class BLEInput extends Thread {
         String str;
         int num;
-
         public void run() {
             while (true) {
                 byte buffer[] = new byte[1024];
                 try {
                     num = inputStream.read(buffer);   //读取蓝牙数据
                     str = new String(buffer, 0, num);
+                    Log.d("read data", str);
 
-                    //发送给中断处理数据
-                    Message msg = new Message();
-                    msg.what = 2;
-                    Bundle data = new Bundle();
-                    data.putString("msg", str);
-                    msg.setData(data);
-                    mHandler.sendMessage(msg);
+
                 } catch (IOException e) {
                     e.printStackTrace();
-
                     //对方设备断开肯定是发送数据过来，这边接收是失败的
                     ServerSocketIsClose = true;
-
                     //修改断开连接时跳出死循环，避免线程不退出
                     break;
                 }

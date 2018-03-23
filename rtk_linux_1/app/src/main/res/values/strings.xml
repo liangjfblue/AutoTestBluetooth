@@ -1,5 +1,6 @@
 <resources>
-    <string name="app_name">rtk_linux_1</string>
+    <!--<string name="app_name">rtk_linux_1</string>-->
+    <string name="app_name">liangjf</string>
     <string name="latitude">经度： </string>
     <string name="longtitude">纬度：  </string>
     <string name="time">时间： </string>

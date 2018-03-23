@@ -18,6 +18,10 @@
     <!-- 震动 -->
     <uses-permission android:name="android.permission.VIBRATE" />
 
+    <!-- /data 目录读写文件 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <meta-data
         android:name="android.support.VERSION"
         android:value="26.0.0-alpha1" />

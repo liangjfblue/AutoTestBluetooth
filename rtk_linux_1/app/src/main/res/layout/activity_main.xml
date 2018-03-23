@@ -35,27 +35,35 @@
 
             <Button
                 android:id="@+id/close_ble"
-                android:layout_width="wrap_content"
+                android:layout_width="60dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="10dp"
                 android:layout_marginTop="500dp"
                 android:text="关闭" />
 
             <Button
                 android:id="@+id/exit_new"
-                android:layout_width="wrap_content"
+                android:layout_width="60dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="130dp"
+                android:layout_marginLeft="85dp"
                 android:layout_marginTop="500dp"
                 android:text="退出" />
 
             <Button
+                android:id="@+id/send_file"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="160dp"
+                android:layout_marginTop="500dp"
+                android:text="测丢数据" />
+
+            <Button
                 android:id="@+id/bluetoothsend_new"
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="250dp"
                 android:layout_marginTop="500dp"
-                android:text="发送" />
+                android:text="连接测试" />
 
             <EditText
                 android:id="@+id/cmd_input"
@@ -80,35 +88,6 @@
                 android:textSize="24sp" />
 
             <TextView
-                android:id="@+id/connect_error"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="240dp"
-                android:text="连接失败次数: "
-                android:textSize="24sp" />
-
-            <TextView
-                android:id="@+id/connect_error_num"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="190dp"
-                android:layout_marginTop="240dp"
-                android:text="0"
-                android:textColor="@color/colorPrimary"
-                android:textSize="24sp"
-                android:textStyle="bold" />
-
-            <Button
-                android:id="@+id/clean_num"
-                android:layout_width="66dp"
-                android:layout_height="35dp"
-                android:layout_marginLeft="220dp"
-                android:layout_marginTop="238dp"
-                android:text="清零"
-                android:textSize="12sp" />
-
-            <TextView
                 android:id="@+id/connect_status"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -119,7 +98,7 @@
 
             <TextView
                 android:id="@+id/connect_flag"
-                android:layout_width="200dp"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="140dp"
                 android:layout_marginTop="200dp"
